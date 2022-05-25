@@ -20,7 +20,7 @@ def main(req: func.HttpRequest, getratings: func.DocumentList) -> func.HttpRespo
             # no result in query
             logging.info("no result found")
             statusDecription ="Rating Not Found"
-            statusCode = 400
+            statusCode = 404
             logging.info(statusDecription)
             ratingCheckerResponse = {"ratingStatus":statusCode, "ratingStatusDecription": statusDecription}
             logging.info(ratingCheckerResponse)
