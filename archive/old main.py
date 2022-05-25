@@ -1,3 +1,4 @@
+from cgi import test
 import logging
 import requests
 import azure.functions as func
@@ -11,6 +12,7 @@ def main(req: func.HttpRequest, ratingcosmosbinding: func.Out[func.Document]) ->
     page = requests.get(f"https://serverlessohapi.azurewebsites.net/api/GetProduct?productId={productId}")
     productExistCode = page.status_code
     print (productExistCode)
+    print("test")
     # if not productExistCode:
     #     try:
     #         req_body = req.get_json()
