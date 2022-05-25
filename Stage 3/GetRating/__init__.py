@@ -5,23 +5,24 @@ import azure.functions as func
 
 
 def main(req: func.HttpRequest, getcosmosrating: func.DocumentList) -> func.HttpResponse:
-    logging.info("error")
     logging.info('Python HTTP trigger function processed a request.')
 
 
-    try: 
-        ratingId = req.params.get('ratingId')
-    except ValueError:
-        statusDecription ="Rating id missing"
-        statusCode = 400
-        logging.info(statusDecription)
-        ratingCheckerResponse = {"ratingStatus":statusCode, "ratingStatusDecription": statusDecription}
-        logging.info(ratingCheckerResponse)
-        return func.HttpResponse(
-            json.dumps(ratingCheckerResponse),
-            status_code=statusCode,
-            mimetype="application/json"
-        )
+    # try: 
+        
+    # except ValueError:
+    #     statusDecription ="Rating id missing"
+    #     statusCode = 400
+    #     logging.info(statusDecription)
+    #     ratingCheckerResponse = {"ratingStatus":statusCode, "ratingStatusDecription": statusDecription}
+    #     logging.info(ratingCheckerResponse)
+    #     return func.HttpResponse(
+    #         json.dumps(ratingCheckerResponse),
+    #         status_code=statusCode,
+    #         mimetype="application/json"
+    #     )
+
+    ratingId = req.params.get('ratingId')
 
     if not ratingId:
         try:
@@ -30,7 +31,7 @@ def main(req: func.HttpRequest, getcosmosrating: func.DocumentList) -> func.Http
             pass
             
         else:
-            id = req_body.get('ratingId')
+            ratingId = req_body.get('ratingId')
 
     if ratingId:
         if not getcosmosrating:
